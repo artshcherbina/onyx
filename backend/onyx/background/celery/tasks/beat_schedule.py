@@ -130,6 +130,7 @@ beat_task_templates: list[dict] = [
     },
 ]
 
+print("ENTERPRISE_EDITION_ENABLED", ENTERPRISE_EDITION_ENABLED)
 if ENTERPRISE_EDITION_ENABLED:
     beat_task_templates.extend(
         [
