@@ -7,7 +7,7 @@ services:
     command: >
       /bin/sh -c "alembic upgrade head &&
       echo \"Starting Onyx Api Server\" &&
-      uvicorn onyx.main:app --host $(hostname -i) --port 9090"
+      uvicorn onyx.main:app --host api_server --port 9090"
     depends_on:
       - relational_db
       - index
