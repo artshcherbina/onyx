@@ -7,7 +7,7 @@ services:
     command: >
       /bin/sh -c "alembic upgrade head &&
       echo \"Starting Onyx Api Server\" &&
-      uvicorn onyx.main:app --host 0.0.0.0 --port 8080"
+      uvicorn onyx.main:app --host 0.0.0.0 --port 9090"
     depends_on:
       - relational_db
       - index
@@ -15,7 +15,7 @@ services:
       - inference_model_server
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "9090:9090"
     environment:
       # Auth Settings
       - AUTH_TYPE=${AUTH_TYPE:-disabled}
@@ -321,7 +321,7 @@ services:
       - api_server
     restart: unless-stopped
     environment:
-      - INTERNAL_URL=http://api_server:8080
+      - INTERNAL_URL=http://api_server:9090
       - WEB_DOMAIN=${WEB_DOMAIN:-}
       - THEME_IS_DARK=${THEME_IS_DARK:-}
       - DISABLE_LLM_DOC_RELEVANCE=${DISABLE_LLM_DOC_RELEVANCE:-}
